@@ -25,7 +25,6 @@ module Spree
             [:id, :name]
         ]
       end
-
     end
   end
 end

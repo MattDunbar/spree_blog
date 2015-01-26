@@ -1,0 +1,18 @@
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @tag } %>
+
+<%= form_for [:admin, @tag], method: :post, url: admin_blog_tags_path, :html => { :multipart => true } do |f| %>
+
+    <fieldset data-hook="new_blog_tag">
+
+      <legend align="center"><%= Spree.t(:new_blog_tag) %></legend>
+
+      <%= f.field_container :name do %>
+          <%= f.label :name, Spree.t(:name) %> <span class="required">*</span><br />
+          <%= f.text_field :name, :class => 'fullwidth title' %>
+          <%= f.error_message_on :name %>
+      <% end %>
+
+      <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+
+    </fieldset>
+<% end %>

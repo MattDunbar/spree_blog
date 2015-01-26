@@ -26,7 +26,6 @@ module Spree
             [:created_at, :title]
         ]
       end
-
     end
   end
 end

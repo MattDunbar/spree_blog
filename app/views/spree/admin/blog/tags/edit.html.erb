@@ -1,0 +1,17 @@
+<% content_for :page_actions do %>
+    <li><%= button_link_to Spree.t(:back_to_blog_tags_list), session[:return_to] || admin_blog_tags_url, :icon => 'arrow-left' %></li>
+    <% if can?(:create, Spree::Blog::Tag) %>
+        <li id="new_blog_tag_link">
+          <%= button_link_to Spree.t(:new_blog_tag), new_object_url, { :icon => 'plus', :id => 'admin_new_blog_tag' } %>
+        </li>
+    <% end %>
+<% end %>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @tag } %>
+
+<%= form_for [:admin, @tag], :method => :put, :html => { :multipart => true } do |f| %>
+    <fieldset class="no-border-top">
+      <%= render :partial => 'form', :locals => { :f => f } %>
+      <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+    </fieldset>
+<% end %>

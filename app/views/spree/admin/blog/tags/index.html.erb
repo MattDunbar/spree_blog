@@ -1,0 +1,47 @@
+<% content_for :page_title do %>
+    <%= Spree.t(:listing_blog_tags) %>
+<% end %>
+
+<% content_for :page_actions do %>
+    <li id="new_blog_tag_link">
+      <%= button_link_to Spree.t(:new_blog_tags), new_object_url, { :remote => true, :icon => 'plus', :id => 'admin_new_blog_tag' } %>
+    </li>
+<% end if can?(:create, Spree::Blog::Tag) %>
+
+<div id="new_blog_tag_wrapper" data-hook></div>
+
+<%= paginate @collection %>
+
+<% if @collection.any? %>
+    <table class="index" id="listing_blog_tags">
+      <colgroup>
+        <col style="width: 85%;">
+        <col style="width: 15%;">
+      </colgroup>
+      <thead>
+      <tr data-hook="admin_blog_tags_index_headers">
+        <th><%= Spree.t(:name) %></th>
+        <th data-hook="admin_blog_tags_index_header_actions" class="actions"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @collection.each do |tag| %>
+          <tr id="<%= spree_dom_id tag %>" data-hook="admin_blog_tag_index_rows" class="<%= cycle('odd', 'even') %>">
+            <td class="align-center"><%= link_to tag.try(:name), edit_admin_blog_tag_path(tag) %></td>
+            <td class="actions" data-hook="admin_blog_tags_index_row_actions">
+              <%= link_to_edit tag, :no_text => true, :class => 'edit' if can?(:edit, tag) %>
+              &nbsp;
+              <%= link_to_delete tag, :no_text => true if can?(:delete, tag) %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <div class="alpha sixteen columns no-objects-found">
+      <%= Spree.t(:no_resource_found, resource: I18n.t(:other, scope: 'activerecord.models.spree.blog/tag')) %>,
+      <%= link_to Spree.t(:add_one), spree.new_admin_blog_tag_path %>!
+    </div>
+<% end %>
+
+<%= paginate @collection %>
