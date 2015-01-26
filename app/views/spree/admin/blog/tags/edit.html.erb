@@ -7,9 +7,9 @@
     <% end %>
 <% end %>
 
-<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @tag } %>
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @blog_tag } %>
 
-<%= form_for [:admin, @tag], :method => :put, :html => { :multipart => true } do |f| %>
+<%= form_for [:admin, @blog_tag], :method => :put, :html => { :multipart => true } do |f| %>
     <fieldset class="no-border-top">
       <%= render :partial => 'form', :locals => { :f => f } %>
       <%= render :partial => 'spree/admin/shared/edit_resource_links' %>

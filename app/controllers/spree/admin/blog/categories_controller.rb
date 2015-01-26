@@ -1,7 +1,7 @@
 module Spree
   module Admin
     module Blog
-      class CategoriesController < Spree::Admin::Blog::ResourceController
+      class CategoriesController < Spree::Admin::ResourceController
 
         def show
           session[:return_to] ||= request.referer
@@ -24,19 +24,19 @@ module Spree
             end
           else
             # Stops people submitting blank slugs, causing errors when they try to update the category again
-            @category.slug = @category.slug_was if @category.slug.blank?
+            @blog_category.slug = @blog_category.slug_was if @blog_category.slug.blank?
             invoke_callbacks(:update, :fails)
             respond_with(@object)
           end
         end
 
         def destroy
-          @category = Spree::Blog::Category.friendly.find(params[:id])
-          @category.destroy
+          @blog_category = Spree::Blog::Category.friendly.find(params[:id])
+          @blog_category.destroy
 
           flash[:success] = Spree.t('notice_messages.blog_category_deleted')
 
-          respond_with(@category) do |format|
+          respond_with(@blog_category) do |format|
             format.html { redirect_to collection_url }
             format.js  { render_js_for_destroy }
           end
@@ -50,7 +50,7 @@ module Spree
         end
 
         def location_after_save
-          spree.edit_admin_blog_category_url(@category)
+          spree.edit_admin_blog_category_url(@blog_category)
         end
 
         def collection

@@ -28,19 +28,19 @@ module Spree
             end
           else
             # Stops people submitting blank slugs, causing errors when they try to update the post again
-            @post.slug = @post.slug_was if @post.slug.blank?
+            @blog_post.slug = @blog_post.slug_was if @blog_post.slug.blank?
             invoke_callbacks(:update, :fails)
             respond_with(@object)
           end
         end
 
         def destroy
-          @post = Spree::Blog::Post.friendly.find(params[:id])
-          @post.destroy
+          @blog_post = Spree::Blog::Post.friendly.find(params[:id])
+          @blog_post.destroy
 
           flash[:success] = Spree.t('notice_messages.blog_post_deleted')
 
-          respond_with(@post) do |format|
+          respond_with(@blog_post) do |format|
             format.html { redirect_to collection_url }
             format.js  { render_js_for_destroy }
           end
@@ -54,7 +54,7 @@ module Spree
         end
 
         def location_after_save
-          spree.edit_admin_blog_post_url(@post)
+          spree.edit_admin_blog_post_url(@blog_post)
         end
 
         def load_data

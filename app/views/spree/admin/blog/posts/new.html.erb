@@ -1,6 +1,6 @@
-<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @post } %>
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @blog_post } %>
 
-<%= form_for [:admin, @post], method: :post, url: admin_blog_posts_path, :html => { :multipart => true } do |f| %>
+<%= form_for [:admin, @blog_post], method: :post, url: admin_blog_posts_path, :html => { :multipart => true } do |f| %>
 
     <fieldset data-hook="new_blog_post">
 

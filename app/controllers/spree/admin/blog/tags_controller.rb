@@ -24,19 +24,19 @@ module Spree
             end
           else
             # Stops people submitting blank slugs, causing errors when they try to update the tag again
-            @tag.slug = @tag.slug_was if @tag.slug.blank?
+            @blog_tag.slug = @blog_tag.slug_was if @blog_tag.slug.blank?
             invoke_callbacks(:update, :fails)
             respond_with(@object)
           end
         end
 
         def destroy
-          @tag = Spree::Blog::Tag.friendly.find(params[:id])
-          @tag.destroy
+          @blog_tag = Spree::Blog::Tag.friendly.find(params[:id])
+          @blog_tag.destroy
 
           flash[:success] = Spree.t('notice_messages.blog_tag_deleted')
 
-          respond_with(@tag) do |format|
+          respond_with(@blog_tag) do |format|
             format.html { redirect_to collection_url }
             format.js  { render_js_for_destroy }
           end
@@ -50,7 +50,7 @@ module Spree
         end
 
         def location_after_save
-          spree.edit_admin_blog_tag_url(@tag)
+          spree.edit_admin_blog_tag_url(@blog_tag)
         end
 
         def collection
