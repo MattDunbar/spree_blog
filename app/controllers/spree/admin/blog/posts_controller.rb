@@ -1,7 +1,6 @@
 module Spree
   module Admin
     module Blog
-
       class PostsController < Spree::Admin::Blog::ResourceController
         before_filter :load_data, :except => :index
 
