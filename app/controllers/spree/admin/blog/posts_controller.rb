@@ -16,8 +16,8 @@ module Spree
         end
 
         def update
-          if params[:post][:tag_ids].present?
-            params[:post][:tag_ids] = params[:post][:tag_ids].split(',')
+          if params[:blog_post][:tag_ids].present?
+            params[:blog_post][:tag_ids] = params[:blog_post][:tag_ids].split(',')
           end
           invoke_callbacks(:update, :before)
           if @object.update_attributes(permitted_resource_params)
@@ -77,7 +77,7 @@ module Spree
         end
 
         def permit_attributes
-          params.require(:post).permit!
+          params.require(:blog_post).permit!
         end
       end
     end

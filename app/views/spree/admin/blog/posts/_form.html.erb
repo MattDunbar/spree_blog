@@ -1,0 +1,49 @@
+<div data-hook="admin_blog_post_form_fields">
+
+  <div data-hook="admin_blog_post_form_left">
+    <div data-hook="admin_blog_post_form_title">
+      <%= f.field_container :title do %>
+          <%= f.label :title, raw(Spree.t(:title) + content_tag(:span, ' *', :class => 'required')) %>
+          <%= f.text_field :title, :class => 'fullwidth title' %>
+          <%= f.error_message_on :title %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_blog_post_form_slug">
+      <%= f.field_container :slug do %>
+          <%= f.label :slug, raw(Spree.t(:slug) + content_tag(:span, ' *',  :class => "required")) %>
+          <%= f.text_field :slug, :class => 'fullwidth title' %>
+          <%= f.error_message_on :slug %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_blog_post_form_category">
+      <%= f.field_container :category do %>
+          <%= f.label :category_id, Spree.t(:category) %>
+          <%= f.select :category_id, Spree::Blog::Category.all.collect {|s| [Spree.t("order_state.#{s.name}"), s.id]}, {:include_blank => true}, {:rows => '20', :class => 'select2 fullwidth'} %>
+          <%= f.error_message_on :category_id %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_blog_post_form_tags">
+      <%= f.field_container :tags do %>
+          <%= f.label :tag_ids, Spree.t(:tags) %><br />
+          <%= f.hidden_field :tag_ids, :value => @post.tag_ids.join(',') %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_blog_post_form_body">
+      <%= f.field_container :body do %>
+          <%= f.label :body, Spree.t(:body) %>
+          <%= f.text_area :body, {:rows => '20', :class => 'fullwidth'} %>
+          <%= f.error_message_on :body %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% unless Rails.env.test? %>
+    <script>
+        $('.select2-container').css({width: '20em'})
+    </script>
+<% end %>
