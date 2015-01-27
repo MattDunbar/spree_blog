@@ -1,7 +1,7 @@
 module Spree
   module Admin
     module Blog
-      class TagsController < Spree::Admin::Blog::ResourceController
+      class TagsController < Spree::Admin::ResourceController
 
         def show
           session[:return_to] ||= request.referer

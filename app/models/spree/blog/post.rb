@@ -4,6 +4,8 @@ module Spree
       # Avoid conflicts by being more specific than 'spree_posts'
       self.table_name = 'spree_blog_posts'
 
+      default_scope { order(created_at: :desc) }
+
       extend FriendlyId
       friendly_id :slug_candidates, use: :slugged
 

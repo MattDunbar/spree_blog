@@ -1,0 +1,6 @@
+<h1>Tag: <%= @tag.name %></h1>
+<ul>
+  <% @tag.posts.each do |post| %>
+      <li><%= link_to post.title, post %></li>
+  <% end %>
+</ul>
