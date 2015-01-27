@@ -1,7 +1,7 @@
 SpreeBlog
 =========
 
-### Warning: This project is incomplete and likely not in a functional state.
+#### Warning: The admin will throw errors until [pull request #5954](https://github.com/spree/spree/pull/5954) is merged into [Spree](https://github.com/spree/spree/).
 
 A very lightweight blog built into the Spree Admin for stores that don't quite need a full blog engine.
 
