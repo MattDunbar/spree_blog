@@ -40,6 +40,22 @@
           <%= f.error_message_on :body %>
       <% end %>
     </div>
+
+    <div data-hook="admin_blog_post_form_meta_keywords">
+      <%= f.field_container :meta_keywords do %>
+          <%= f.label :meta_keywords, Spree.t(:meta_keywords) %>
+          <%= f.text_area :meta_keywords, {:rows => '3', :class => 'fullwidth'} %>
+          <%= f.error_message_on :meta_keywords %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_blog_post_form_meta_description">
+      <%= f.field_container :meta_description do %>
+          <%= f.label :meta_keywords, Spree.t(:meta_description) %>
+          <%= f.text_area :meta_description, {:rows => '3', :class => 'fullwidth'} %>
+          <%= f.error_message_on :meta_description %>
+      <% end %>
+    </div>
   </div>
 </div>
 
