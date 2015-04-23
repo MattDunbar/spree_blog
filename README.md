@@ -1,7 +1,7 @@
 SpreeBlog
 =========
 
-#### Warning: The admin will throw errors until [pull request #5954](https://github.com/spree/spree/pull/5954) is merged into [Spree](https://github.com/spree/spree/).
+#### Warning: Support for changes in pull request [pull request #5954](https://github.com/spree/spree/pull/5954) are added via monkey patching. This is only compatible with Spree 2-2-stable, 2-3-stable, and 2-4-stable. Although unlikely, the resource controller changes may cause compatibility issues.
 
 A very lightweight blog built into the Spree Admin for stores that don't quite need a full blog engine.
 
