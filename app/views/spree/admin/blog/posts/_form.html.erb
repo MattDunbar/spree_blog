@@ -12,7 +12,7 @@
     <div data-hook="admin_blog_post_form_attachment">
       <%= f.field_container :attachment do %>
           <%= f.label :attachment, raw(Spree.t(:attachment) + content_tag(:span, ' *',  :class => "required")) %>
-          <%= f.attachment :attachment %>
+          <%= f.file_field :attachment %>
           <%= f.error_message_on :attachment %>
       <% end %>
     </div>
