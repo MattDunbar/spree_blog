@@ -23,6 +23,7 @@ module Spree
                         url: 'spree/blog/:id/:style/:basename.:extension',
                         path: ':url',
                         convert_options: { all: '-strip -auto-orient -colorspace sRGB' }
+      validates_attachment_content_type :attachment, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
       def normalize_slug
         self.slug = normalize_friendly_id(slug)
