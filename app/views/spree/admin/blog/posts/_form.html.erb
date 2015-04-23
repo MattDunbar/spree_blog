@@ -9,6 +9,14 @@
       <% end %>
     </div>
 
+    <div data-hook="admin_blog_post_form_attachment">
+      <%= f.field_container :attachment do %>
+          <%= f.label :attachment, raw(Spree.t(:attachment) + content_tag(:span, ' *',  :class => "required")) %>
+          <%= f.attachment :attachment %>
+          <%= f.error_message_on :attachment %>
+      <% end %>
+    </div>
+
     <div data-hook="admin_blog_post_form_slug">
       <%= f.field_container :slug do %>
           <%= f.label :slug, raw(Spree.t(:slug) + content_tag(:span, ' *',  :class => "required")) %>
