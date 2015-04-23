@@ -25,10 +25,11 @@
       <% end %>
     </div>
 
-    <div data-hook="admin_blog_post_form_tags">
-      <%= f.field_container :tags do %>
-          <%= f.label :tag_ids, Spree.t(:tags) %><br />
-          <%= f.hidden_field :tag_ids, :value => @blog_post.tag_ids.join(',') %>
+    <div data-hook="admin_blog_post_form_excerpt">
+      <%= f.field_container :excerpt do %>
+          <%= f.label :excerpt, Spree.t(:excerpt) %>
+          <%= f.text_area :excerpt, {:rows => '20', :class => 'fullwidth'} %>
+          <%= f.error_message_on :excerpt %>
       <% end %>
     </div>
 
