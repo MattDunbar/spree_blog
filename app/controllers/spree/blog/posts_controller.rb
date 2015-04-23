@@ -2,7 +2,8 @@ module Spree
   module Blog
     class PostsController < Spree::StoreController
       def index
-        @posts = Spree::Blog::Post.all
+        @categories = Spree::Blog::Category.where(hidden: false)
+        @posts = Spree::Blog::Post.where(category: @categories)
       end
 
       def show
