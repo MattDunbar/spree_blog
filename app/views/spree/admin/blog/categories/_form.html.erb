@@ -16,6 +16,14 @@
           <%= f.error_message_on :slug %>
       <% end %>
     </div>
+
+    <div data-hook="admin_blog_category_form_hidden">
+      <%= f.field_container :hidden do %>
+          <%= f.label :hidden, raw(Spree.t(:hidden) + content_tag(:span, ' *', :class => 'required')) %>
+          <%= f.check_box :hidden %>
+          <%= f.error_message_on :hidden %>
+      <% end %>
+    </div>
   </div>
 </div>
 
