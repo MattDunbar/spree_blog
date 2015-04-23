@@ -23,7 +23,6 @@ module Spree
                         url: 'spree/products/:id/:style/:basename.:extension',
                         path: ':url',
                         convert_options: { all: '-strip -auto-orient -colorspace sRGB' }
-    end
 
       def normalize_slug
         self.slug = normalize_friendly_id(slug)
