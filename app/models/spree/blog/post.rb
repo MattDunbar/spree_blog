@@ -17,6 +17,14 @@ module Spree
 
       before_validation :normalize_slug, on: :update
 
+      has_attached_file :attachment,
+                        styles: { standard: '1800x800>', square: '600x600#' },
+                        default_style: :product,
+                        url: 'spree/products/:id/:style/:basename.:extension',
+                        path: ':url',
+                        convert_options: { all: '-strip -auto-orient -colorspace sRGB' }
+    end
+
       def normalize_slug
         self.slug = normalize_friendly_id(slug)
       end
