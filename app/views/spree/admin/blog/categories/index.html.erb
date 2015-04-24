@@ -4,7 +4,7 @@
 
 <% content_for :page_actions do %>
     <li id="new_blog_category_link">
-      <%= button_link_to Spree.t(:new_blog_categories), new_object_url, { :remote => true, :icon => 'plus', :id => 'admin_new_blog_category' } %>
+      <%= button_link_to Spree.t(:new_blog_category), new_object_url, { :remote => true, :icon => 'plus', :id => 'admin_new_blog_category' } %>
     </li>
 <% end if can?(:create, Spree::Blog::Category) %>
 
