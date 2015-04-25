@@ -82,6 +82,8 @@
               <%= link_to_edit blog_post, :no_text => true, :class => 'edit' if can?(:edit, blog_post) %>
               &nbsp;
               <%= link_to_delete blog_post, :no_text => true if can?(:delete, blog_post) %>
+              &nbsp;
+              <%= link_to 'Preview', blog_post %>
             </td>
           </tr>
       <% end %>
