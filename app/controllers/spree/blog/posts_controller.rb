@@ -9,7 +9,7 @@ module Spree
       def show
         @categories = Spree::Blog::Category.where(hidden: false)
         @post = Spree::Blog::Post.friendly.find(params[:id])
-        if !spree_current_user.admin? && (@post.category.hidden || @post.hidden)
+        if (spree_current_user.nil? || !spree_current_user.admin?) && (@post.category.hidden || @post.hidden)
           raise ActiveRecord::RecordNotFound
         end
       end
