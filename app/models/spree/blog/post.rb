@@ -18,7 +18,7 @@ module Spree
       before_validation :normalize_slug, on: :update
 
       has_attached_file :attachment,
-                        styles: { standard: '1200x1600>', square: '600x600#' },
+                        styles: { standard: '1200x730>', square: '600x600#' },
                         default_style: :standard,
                         url: 'spree/blog/:id/:style/:basename.:extension',
                         path: ':url',
